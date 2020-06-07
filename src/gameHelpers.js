@@ -1,10 +1,17 @@
 export const STAGE_WIDTH = 12;
 export const STAGE_HEIGHT = 20;
+export const NEXT_PIECE_LENGTH = 4;
 
 export const createStage = () =>
     // Create empty grid
     Array.from(Array(STAGE_HEIGHT), () =>
         new Array(STAGE_WIDTH).fill([0, 'clear'])
+    )
+
+export const createNextPieceBoard = () =>
+    // Create empty grid
+    Array.from(Array(NEXT_PIECE_LENGTH), () =>
+        new Array(NEXT_PIECE_LENGTH).fill([0])
     )
 
 export const checkCollision = (player, stage, { x: moveX, y: moveY }) => {

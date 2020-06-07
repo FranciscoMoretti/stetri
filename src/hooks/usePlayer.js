@@ -7,6 +7,7 @@ export const usePlayer = () => {
     const [player, setPlayer] = useState({
         pos: { x: 0, y: 0 },
         tetromino: TETROMINOS[0].shape,
+        nextTetromino: TETROMINOS[0].shape,
         collided: false,
     });
 
@@ -55,11 +56,24 @@ export const usePlayer = () => {
                 pos: {
                     x: STAGE_WIDTH / 2 - 2, y: 0
                 },
+                tetromino: [...player.nextTetromino],
+                nextTetromino: randomTetromino().shape,
+                collided: false,
+            })
+        }, [player.nextTetromino])
+
+    const initPlayer = useCallback(
+        () => {
+            setPlayer({
+                pos: {
+                    x: STAGE_WIDTH / 2 - 2, y: 0
+                },
                 tetromino: randomTetromino().shape,
+                nextTetromino: randomTetromino().shape,
                 collided: false,
             })
         }, [])
 
-    return [player, updatePlayerPos, resetPlayer, playerRotate];
+    return [player, updatePlayerPos, initPlayer, resetPlayer, playerRotate];
 
 }

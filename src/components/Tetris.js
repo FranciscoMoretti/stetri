@@ -8,12 +8,13 @@ import { StyledTetrisWrapper, StyledTetris } from './styles/StyledTetris'
 // Custom Hooks
 import { useInterval } from '../hooks/useInterval';
 import { useGameStatus } from '../hooks/useGameStatus';
+import { useNextPiece } from '../hooks/useNextPiece';
 import { usePlayer } from '../hooks/usePlayer';
 import { useStage } from '../hooks/useStage';
 
 // Components
-import Stage from './Stage';
-import Display from './Display';
+import { Stage } from './Grid';
+import { Display, DisplayNext } from './Display';
 import StartButton from './StartButton';
 
 
@@ -21,8 +22,9 @@ const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
 
-    const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
+    const [player, updatePlayerPos, initPlayer, resetPlayer, playerRotate] = usePlayer();
     const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
+    const [nextPieceBoard] = useNextPiece(player.nextTetromino);
     const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
         rowsCleared);
 
@@ -38,7 +40,7 @@ const Tetris = () => {
         //Reset everything
         setStage(createStage());
         setDropTime(1000);
-        resetPlayer();
+        initPlayer();
         setGameOver(false);
         setScore(0);
         setRows(0);
@@ -116,6 +118,7 @@ const Tetris = () => {
                                 <Display text={`Score: ${score}`} />
                                 <Display text={`Rows: ${rows}`} />
                                 <Display text={`Level: ${level}`} />
+                                <DisplayNext text={"Next: "} next={nextPieceBoard} />
                             </div>
                         )}
                     <StartButton callback={startGame} />

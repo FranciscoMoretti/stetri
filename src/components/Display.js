@@ -1,8 +1,13 @@
 import React from 'react';
 import { StyledDisplay } from './styles/StyledDisplay';
+import { NextPiece } from './Grid';
 
-const Display = ({ gameOver, text }) => (
+export const Display = ({ gameOver, text }) => (
     <StyledDisplay gameOver={gameOver}>{text}</StyledDisplay>
 )
-
-export default Display;
+export const DisplayNext = ({ text, next }) => (
+    <StyledDisplay>
+        {text}
+        <NextPiece board={next} />
+    </StyledDisplay>
+)
