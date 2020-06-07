@@ -9,16 +9,26 @@ export const useStage = (player, resetPlayer) => {
     useEffect(() => {
         setRowsCleared(0);
 
-        const sweepRows = newStage =>
-            newStage.reduce((acc, row) => {
+        // TODO: optimize code
+        const sweepRowsRotateColumns = newStage => {
+            let clearedCount = 0;
+            newStage = newStage.reduce((acc, row) => {
                 if (row.findIndex(cell => cell[0] === 0) === -1) {
                     setRowsCleared(prev => prev + 1);
+                    clearedCount++;
                     acc.unshift(new Array(newStage[0].length).fill([0, 'clear']));
                     return acc;
                 }
                 acc.push(row);
                 return acc;
-            }, [])
+            }, []);
+            if (clearedCount > 0) {
+                newStage.forEach((row, y) => {
+                    row.unshift(...row.splice(-clearedCount));
+                });
+            }
+            return newStage;
+        };
 
         const updateStage = prevStage => {
             // First flush the stage
@@ -40,7 +50,7 @@ export const useStage = (player, resetPlayer) => {
             // Then check if we collided
             if (player.collided) {
                 resetPlayer();
-                return sweepRows(newStage);
+                return sweepRowsRotateColumns(newStage);
             }
 
             return newStage;
@@ -48,7 +58,7 @@ export const useStage = (player, resetPlayer) => {
 
         setStage(prev => updateStage(prev))
 
-    }, [player, resetPlayer])
+    }, [player, resetPlayer, rowsCleared])
 
     return [stage, setStage, rowsCleared];
 }
