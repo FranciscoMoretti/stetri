@@ -1,4 +1,4 @@
-# Stetri
+# Stetri (https://franciscomoretti.github.io/stetri/)
 
 ### Tetris variation where clearing rows rotate the columns.
 
