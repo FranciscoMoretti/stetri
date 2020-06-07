@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/stetri/static/css/main.8f8cb1ef.chunk.css",
+    "main.js": "/stetri/static/js/main.a7358f46.chunk.js",
+    "main.js.map": "/stetri/static/js/main.a7358f46.chunk.js.map",
+    "runtime-main.js": "/stetri/static/js/runtime-main.25755b01.js",
+    "runtime-main.js.map": "/stetri/static/js/runtime-main.25755b01.js.map",
+    "static/js/2.b2fb0c27.chunk.js": "/stetri/static/js/2.b2fb0c27.chunk.js",
+    "static/js/2.b2fb0c27.chunk.js.map": "/stetri/static/js/2.b2fb0c27.chunk.js.map",
+    "index.html": "/stetri/index.html",
+    "precache-manifest.4d648e8189d56b91ba2db715c49cd9eb.js": "/stetri/precache-manifest.4d648e8189d56b91ba2db715c49cd9eb.js",
+    "service-worker.js": "/stetri/service-worker.js",
+    "static/css/main.8f8cb1ef.chunk.css.map": "/stetri/static/css/main.8f8cb1ef.chunk.css.map",
+    "static/js/2.b2fb0c27.chunk.js.LICENSE.txt": "/stetri/static/js/2.b2fb0c27.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/stetri/static/media/Pixel-LCD-7.e2897552.woff",
+    "static/media/bg.png": "/stetri/static/media/bg.2810fe6b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.25755b01.js",
+    "static/js/2.b2fb0c27.chunk.js",
+    "static/css/main.8f8cb1ef.chunk.css",
+    "static/js/main.a7358f46.chunk.js"
+  ]
+}
