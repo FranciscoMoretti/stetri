@@ -1,4 +1,4 @@
-## Stetri
+# Stetri
 
 ### Tetris variation where clearing rows rotate the columns.
 
